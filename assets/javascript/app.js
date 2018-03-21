@@ -4,6 +4,17 @@
 //https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
 //FozN4hA9DAjuptuej3UXIG5BT0mmLcrTx_LQEFyRUxSmJuGYe5Zic3os-8GGQPiv0TSfvxz6lkfxmyEvM0st4OFKA3kJE5bEMGQBpL8NuOlW-WXAWsOLO5ykfVCwWnYx
 
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyDZvgtMtB6eoQymC3arARneZq557FGTsC0",
+        authDomain: "travelproj-2dc6d.firebaseapp.com",
+        databaseURL: "https://travelproj-2dc6d.firebaseio.com",
+        projectId: "travelproj-2dc6d",
+        storageBucket: "travelproj-2dc6d.appspot.com",
+        messagingSenderId: "625003623246"
+    };
+    firebase.initializeApp(config);
+
 //UGLY URL VARIABLES//
 //var openWeatherQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=beeeb0200ae49646011f7917db233044";
 var googleMapsTimeZoneQueryURL = "https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=AIzaSyACzWLfVVhDTJc2ivhNQio_LjbUrLfYViU";
@@ -36,19 +47,12 @@ function initMap(coord) {
 $(document).ready(function(){
 
 
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDZvgtMtB6eoQymC3arARneZq557FGTsC0",
-        authDomain: "travelproj-2dc6d.firebaseapp.com",
-        databaseURL: "https://travelproj-2dc6d.firebaseio.com",
-        projectId: "travelproj-2dc6d",
-        storageBucket: "travelproj-2dc6d.appspot.com",
-        messagingSenderId: "625003623246"
-    };
-    firebase.initializeApp(config);
 
 
-    $("#destination").on("click", function(){
+
+    $("#submit-data").on("click", function(){
+        city = $("#destination").val().trim();
+        console.log($("#destination").val().trim())
         $.ajax({
             url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
             method: "get"
