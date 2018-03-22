@@ -4,31 +4,32 @@
 //https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
 //FozN4hA9DAjuptuej3UXIG5BT0mmLcrTx_LQEFyRUxSmJuGYe5Zic3os-8GGQPiv0TSfvxz6lkfxmyEvM0st4OFKA3kJE5bEMGQBpL8NuOlW-WXAWsOLO5ykfVCwWnYx
 
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyDZvgtMtB6eoQymC3arARneZq557FGTsC0",
-        authDomain: "travelproj-2dc6d.firebaseapp.com",
-        databaseURL: "https://travelproj-2dc6d.firebaseio.com",
-        projectId: "travelproj-2dc6d",
-        storageBucket: "travelproj-2dc6d.appspot.com",
-        messagingSenderId: "625003623246"
-    };
-    firebase.initializeApp(config);
-
 //UGLY URL VARIABLES//
 //var openWeatherQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=beeeb0200ae49646011f7917db233044";
-var googleMapsTimeZoneQueryURL = "https://maps.googleapis.com/maps/api/timezone/json?location=38.908133,-77.047119&timestamp=1458000000&key=AIzaSyACzWLfVVhDTJc2ivhNQio_LjbUrLfYViU";
-var googleCustomSearchAPIKey = "AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus";
-var googleCustomSearchURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus&cx=017576662512468239146:omuauf_lfve&q=lectures";
+
+//var googleCustomSearchAPIKey = "AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus";
+//var googleCustomSearchURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus&cx=017576662512468239146:omuauf_lfve&q=lectures";
 //--------------------------YUCK--------------------------------------------------------->
 
-//actual variables
+
+    // Initialize Firebase
+
+var config = {
+    apiKey: "AIzaSyDZvgtMtB6eoQymC3arARneZq557FGTsC0",
+    authDomain: "travelproj-2dc6d.firebaseapp.com",
+    databaseURL: "https://travelproj-2dc6d.firebaseio.com",
+    projectId: "travelproj-2dc6d",
+    storageBucket: "travelproj-2dc6d.appspot.com",
+    messagingSenderId: "625003623246"
+};
+
 
 var city = "Rome, Italy";
 var results = undefined;
 var coord = {lat: 0 , lng: 0 };
+var dateAndTime = "";
 
-
+firebase.initializeApp(config);
 
 
 
@@ -53,6 +54,8 @@ $(document).ready(function(){
     $("#submit-data").on("click", function(){
         city = $("#destination").val().trim();
         console.log($("#destination").val().trim())
+        $("#weather").empty();
+        //OPEN WEATHER API
         $.ajax({
             url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
             method: "get"
@@ -65,16 +68,27 @@ $(document).ready(function(){
             coord.lng = response.coord.lon;
             //coords
             initMap(coord);
-            $("#weather").html("<p>" + response.main.temp + "</p>")
+            $("#weather").append("<p>" + response.main.temp + "ºF</p>")
+            timeZone();
         });
+        
 
-        $.ajax({
-            url:googleMapsTimeZoneQueryURL,
-            method: "get"
-        }).then(function(response){
-            results = response;
-            console.log(response);
-        });
+        //TIMEZONEDB
+        function timeZone(){
+            $.ajax({
+                url:"http://api.timezonedb.com/v2/get-time-zone?key=GDN58Z4BNM7G&format=json&by=position&lat=" + coord.lat + "&lng=" + coord.lng,
+                method: "get"
+            }).then(function(response){
+                results = response;
+                //console.log(response);
+                var foreignTime = moment(response.formatted);
+                console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
+                dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
+                $("#weather").append("<p>" + dateAndTime + "</p>");
+            });
+        }
+
+        //
     });
 
 });
