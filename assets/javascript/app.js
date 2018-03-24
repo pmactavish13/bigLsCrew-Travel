@@ -17,12 +17,35 @@ $("#submit-data").on("click", function(){
     cityPlaceApi = $("#destination").val().trim();
     console.log($("#destination").val().trim())
     $.ajax({
-        url:"https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+" + cityPlaceApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
+        url:"https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+" + cityPlaceApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
         method: "get"
     }).then(function(response){
         results = response;
         console.log(response);
-      
+        $("#restaurant").append("<div>" + response.results[0].name + "</div>")
+        $("#restaurant").append("<div>" + response.results[0].formatted_address + "</div>")
+        $("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
+        $("#restaurant").append("<div>" + response.results[1].name + "</div>")
+        $("#restaurant").append("<div>" + response.results[1].formatted_address + "</div>")
+        //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
+        $("#restaurant").append("<div>" + response.results[2].name + "</div>")
+        $("#restaurant").append("<div>" + response.results[2].formatted_address + "</div>")
+        //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
+    });
+});
+//search?source=hp&ei=MG22WvH-LMbm_QbgjqDYDw&q=health+information+in+philadelphia&oq=health+information+in+philadelphia&gs_l=psy-ab.3..33i22i29i30k1l4.1719.7120.0.7301.36.29.0.6.6.0.154.1935.24j4.29.0....0...1c.1.64.psy-ab..1.35.2001.6..0j35i39k1j0i131k1j0i67k1j0i131i67k1j0i20i263k1j0i22i30k1j0i8i13i30k1.48.ygbpj7BRdQY
+$("#submit-data").on("click", function(){
+    cityHealthApi = $("#destination").val().trim();
+    console.log($("#destination").val().trim())
+    $.ajax({
+        url:"https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=health+information+in+" + cityHealthApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
+        method: "get"
+    }).then(function(responseCityHealth){
+        results = responseCityHealth;
+        console.log(responseCityHealth);
+        //$("#restaurant").html("<div>" + response.results[0].name + "</div>")
+        //$("#restaurant").append("<div>" + response.results[0].formatted_address + "</div>")
+        //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
     });
 });
 
