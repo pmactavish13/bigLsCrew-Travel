@@ -9,10 +9,24 @@
 
 //var googleCustomSearchAPIKey = "AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus";
 //var googleCustomSearchURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus&cx=017576662512468239146:omuauf_lfve&q=lectures";
+
+/*
+            $.ajax({
+                url:"https://tools.cdc.gov/api/v2/resources/media?topicids=6241",
+                method: "get"
+            }).then(function(response){
+               results = response;
+               console.log(results);
+               //ID:6240
+            });
+*/
 //--------------------------YUCK--------------------------------------------------------->
+//IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! 
 
 
-    // Initialize Firebase
+ // Initialize Firebase
+
+ //IDs NEEDED: "map", "submit-data", "weather"
 
 var config = {
     apiKey: "AIzaSyDZvgtMtB6eoQymC3arARneZq557FGTsC0",
@@ -45,6 +59,7 @@ function initMap(coord) {
     });
   }
 
+
 $(document).ready(function(){
 
 
@@ -53,17 +68,18 @@ $(document).ready(function(){
 
     $("#submit-data").on("click", function(){
         city = $("#destination").val().trim();
-        console.log($("#destination").val().trim())
+        //console.log($("#destination").val().trim())
         $("#weather").empty();
+
         //OPEN WEATHER API
         $.ajax({
             url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
             method: "get"
         }).then(function(response){
             results = response;
-            console.log(response);
-            console.log(response.name);
-            console.log(response.main.temp);
+            //console.log(response);
+            //console.log(response.name);
+            //console.log(response.main.temp);
             coord.lat = response.coord.lat;
             coord.lng = response.coord.lon;
             //coords
@@ -80,15 +96,17 @@ $(document).ready(function(){
                 method: "get"
             }).then(function(response){
                 results = response;
-                //console.log(response);
+                //v2/resources/media/console.log(response);
                 var foreignTime = moment(response.formatted);
-                console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
+                //console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
                 dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
                 $("#weather").append("<p>" + dateAndTime + "</p>");
             });
+
+
         }
 
-        //
+x
     });
 
 });
