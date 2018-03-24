@@ -26,24 +26,14 @@
 
  // Initialize Firebase
 
- //IDs NEEDED: "map", "submit-data", "weather"
-
-var config = {
-    apiKey: "AIzaSyDZvgtMtB6eoQymC3arARneZq557FGTsC0",
-    authDomain: "travelproj-2dc6d.firebaseapp.com",
-    databaseURL: "https://travelproj-2dc6d.firebaseio.com",
-    projectId: "travelproj-2dc6d",
-    storageBucket: "travelproj-2dc6d.appspot.com",
-    messagingSenderId: "625003623246"
-};
-
+ //IDs NEEDED: "map", "submit-data", "weather", "destination"
 
 var city = "Rome, Italy";
 var results = undefined;
 var coord = {lat: 0 , lng: 0 };
 var dateAndTime = "";
 
-firebase.initializeApp(config);
+
 
 
 
@@ -62,12 +52,10 @@ function initMap(coord) {
 
 $(document).ready(function(){
 
-
-
-
-
-    $("#submit-data").on("click", function(){
+    $("#submit-data").on("click", function(event){
+        event.preventDefault();
         city = $("#destination").val().trim();
+        console.log(city);
         //console.log($("#destination").val().trim())
         $("#weather").empty();
 
@@ -77,9 +65,9 @@ $(document).ready(function(){
             method: "get"
         }).then(function(response){
             results = response;
-            //console.log(response);
-            //console.log(response.name);
-            //console.log(response.main.temp);
+            console.log(response);
+            console.log(response.name);
+            console.log(response.main.temp);
             coord.lat = response.coord.lat;
             coord.lng = response.coord.lon;
             //coords
@@ -96,9 +84,10 @@ $(document).ready(function(){
                 method: "get"
             }).then(function(response){
                 results = response;
+                console.log(response);
                 //v2/resources/media/console.log(response);
                 var foreignTime = moment(response.formatted);
-                //console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
+                console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
                 dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
                 $("#weather").append("<p>" + dateAndTime + "</p>");
             });

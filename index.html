@@ -9,6 +9,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <!-- Optional JavaScript -->
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    <script src="assets/javascript/app.js"></script>
+    <!--FIREBASE-->
+
+    <!--GOOGLE MAPS-->
+    <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc&callback=initMap'async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
     <title>Super Smart Travel</title>
   </head>
   <body>
@@ -18,7 +32,7 @@
               <p class="lead">A multi-dimentional travel search experience.</p>
             </div>
               <form class="citysearch">
-                  <input class="form-control" type="text" placeholder="Default input">
+                  <input id = "destination" type="text" class="form-control"  placeholder="City, Country">
       
                   <div class="form-row py-3">
                     <div class="col mr-1">
@@ -27,6 +41,7 @@
                     <div class="col">
                       <input type="text" class="form-control" placeholder="Last name">
                     </div>
+                    <button id = "submit-data" type="submit" class="btn btn-primary">Submit</button>
                   </div>
                 </form>
               </div>
@@ -60,11 +75,11 @@
                       <div class="card-header"><h4>WEATHER</h4></div>
                       <div class="card-body">
                         <div class="cardinfo time">
-                          <div class="current">
+                          <div id = "weather" class="current">
                           <h5 class="alertheaders">Current Weather</h5>
                           <h5 id="currentresponse">
-                            <span id="currentf">00f</span>
-                            <span id="currentc">00c</span>
+                            <span id=>00f</span>
+                            <!--<span id="currentc">00c</span>-->
                           </h5>
                         </div>
                         <div class="average">
@@ -176,15 +191,12 @@
 
       <div class="row googlemap">
         <div class="map-embed">
-
+          <div id = "map"></div>
         </div>
       </div>
      
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="app.js"></script>
+
   </body>
 </html>
