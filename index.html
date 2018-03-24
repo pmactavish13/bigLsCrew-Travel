@@ -1,151 +1,206 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Big L's Crew - Travel</title>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Optional JavaScript -->
 
 
-    <link href="https://fonts.googleapis.com/css?family=Merriweather|Playfair+Display" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">    
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-   
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css"> 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://momentjs.com/downloads/moment.js"></script>
+    
+    <!--FIREBASE-->
+
+    <!--GOOGLE MAPS-->
     <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc&callback=initMap'async defer></script>
-
-</head>
-
-<body>
-<div id="container">
-<!--Starting Page -->
-
-  <div class = "row">
-      <div class="jumbotron">
-          <h1>Practical Travel</h1>
-          <p>A multi-dimentional travel search experience.</p>
-          
-      </div>
-
-      <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-  </body>
-  
-    <div class="col-xs-12 col-sm-12 col-md-1"></div>
-    <div class="col-xs-12 col-sm-12 col-md-10">  
-
-    <div class="col-xs-12 col-sm-12 col-md-1"></div>
-  </div>
-</div>
-
-  <div class = "row">
-    <div class="col-xs-12 col-sm-12 col-md-1"></div>
-    <div class="col-xs-12 col-sm-12 col-md-10">  
-      <div class="panel panel-default">
-        
-        <div class="panel-heading">
-          <h3 class="panel-title">Enter Your Information</h3>
-        </div>
-        
-        <div class="panel-body">
-
-          <label for="basic-url">Name:</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="name">
-          </div>
+    <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <script src="assets/javascript/app.js"></script>
+    <title>Super Smart Travel</title>
+  </head>
+  <body>
+      <div class="jumbotron jumbotron-fluid mb-5">
+          <div class="textintro">
+              <h1 class="headline">PRACTICAL TRAVEL</h1>
+              <p class="lead">A multi-dimentional travel search experience.</p>
+            </div>
+              <form class="citysearch">
+                  <input id = "destination" type="text" class="form-control"  placeholder="City, Country">
       
-          <label for="destination">Destination:</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="destination">
+                  <div class="form-row py-3">
+                    <div class="col mr-1">
+                      <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                      <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                    <button id = "submit-data" type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <div>
+
+      <!-- user enters name/search terms -->
+      <!-- <div class="row landing py-5 mb-5">
+        <div class="textintro">
+        <h1>PRACTICAL TRAVEL</h1>
+        <p class="lead">A multi-dimentional travel search experience.</p>
+      </div>
+        <form class="citysearch">
+            <input class="form-control" type="text" placeholder="Default input">
+
+            <div class="form-row py-3">
+              <div class="col">
+                <input type="text" class="form-control" placeholder="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Last name">
+              </div>
+            </div>
+          </form>
+        </div> -->
+      
+
+      <!-- weather and travel responses -->
+          <div class="row weatheralert">
+                  <div class="col-md-6">
+                    <div class="card">
+                      <div class="card-header"><h4>WEATHER</h4></div>
+                      <div class="card-body">
+                        <div class="cardinfo time">
+                          <div id = "weather" class="current">
+                          <h5 class="alertheaders">Current Weather</h5>
+                          <h5 id="currentresponse">
+                            <span id=>00f</span>
+                            <!--<span id="currentc">00c</span>-->
+                          </h5>
+                        </div>
+                        <div class="average">
+                            <h5 class="alertheaders">Seasonal Average</h5>
+                            <h5 id="currentresponse">
+                              <span id="currentf">00f</span>
+                              <span id="currentc">00c</span>
+                            </h5>
+                          </div>
+                        </div>
+                        <div class="cardinfo zone">
+                            <div class="current">
+                            <h5 class="alertheaders">Current Weather</h5>
+                            <h5 id="currentresponse">
+                              <span id="currentf">00f</span>
+                              <span id="currentc">00c</span>
+                            </h5>
+                          </div>
+                          <div class="average">
+                              <h5 class="alertheaders">Seasonal Average</h5>
+                              <h5 id="currentresponse">
+                                <span id="currentf">00f</span>
+                                <span id="currentc">00c</span>
+                              </h5>
+                            </div>
+                          </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- card 2 -->
+                  <div class="col-md-6">
+                      <div class="card">
+                        <div class="card-header"><h4>TRAVEL ADVISORIES</h4></div>
+
+                        <div class="card-body">
+                            <div class="cardinfo alert">
+                                <h5 class="alertheaders pl-3">Travel Warnings</h5>
+                                <p class = "alert-response pl-3" id="travel-response-no">
+                                  There are no current travel warnings for this location.
+                                </p>
+                                <!-- <p class = "alertresponse pl-3" id="travel-response-yes">
+                                    There is a current travel warning for this location.
+                                  </p> -->
+                              </div>
+                          
+
+                          <div class="cardinfo vax">
+                              <h5 class="alertheaders pl-3">Recommended Vaccinations</h5>
+                              <p class = "alert-response pl-3" id="vax-response-no">
+                                There are no current vaccinations recommended for this location.
+                              </p>
+                              <!-- <p class = "alert-response pl-3" id="vax-response-yes">
+                                  There CDC currently recommends that you are vaccinated for alien stubble fever.
+                                </p> -->
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+               
+        </div>
+
+           <div class="row alert-row my-5">
+         
+            <!-- <h3><span id="alerticon"></span>Alert Header!</h3> -->
+            <div class="col-md-6">
+              <div class="restaurant-img" id="rest-img"><img src=""></div>
+            </div>
+            <div class="col-md-6">
+              <div class="restaurant-txt py-5">
+           <h3 class="w-100"><span id="rest-name ">Restaurant Name</h3></span>
+           <p class= "w-100"><span id="rest-address">1234 This Street</p></span>    
+          </div> 
+  
           </div>
+         </div>
+                
+  
 
-          <label for="basic-url">Travel Date:</label>
-          <div class="input-group">
-            <input type="text" class="form-control" id="date">
-          </div>
-          <input id="submit-data" class="btn btn-primary" type="submit" value="Submit">
+      
 
+      <!-- photo gallery area-->
+      <div class="row photogallery my-5">
+        <div class="slideshow"></div>
+
+      </div>
+
+
+      <div class="row searchoptions">
+        <div class="col-md-4">
+            <div class="searchimg">
+            <img src="assets/images/travelsite-events.jpg" class="pictures" id="events-image">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="searchimg">
+                <img src="assets/images/travelsite-sports.jpg" class="pictures" id = "sports-image">
+              </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="searchimg">
+                <img src="assets/images/travelsite-food.jpg" class="pictures" id= "food-image">
+              </div>
+        </div>
+        </div>
+
+      <div class="row googlemap">
+        <div class="map-embed">
+          <div id = "map"></div>
         </div>
       </div>
-    <div class="col-xs-12 col-sm-12 col-md-1"></div>
-  </div>
-</div>
-
-<div class = "row">
-    <div class="col-xs-12 col-sm-12 col-md-4">  
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Weather and Time</h3>
-        </div>
-        <div id = "weather" class="panel-body">
-            Panel content
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-xs-12 col-sm-12 col-md-4">  
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Weather and Time</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-xs-12 col-sm-12 col-md-4">  
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Restaurants</h3>
-        </div>
-        <div class="panel-body" id= "restaurant">
-            
-        </div>
-      </div>
-    </div> 
-  </div>
-
-  <div class = "row">
-    <div class="col-xs-12 col-sm-12 col-md-4">  
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Weather and Time</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-xs-12 col-sm-12 col-md-4">  
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Weather and Time</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-      </div>
-    </div> 
-
-    <div class="col-xs-12 col-sm-12 col-md-4">  
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">Weather and Time</h3>
-        </div>
-        <div class="panel-body">
-            Panel content
-        </div>
-      </div>
-    </div> 
-  </div>
-
-</div> 
-
-<script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
-<!--<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.app.js"></script> -->
-<script src="assets/javascript/app.js"></script>
-</body>
-</html> 
+     
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  </body>
+</html>

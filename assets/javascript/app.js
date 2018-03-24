@@ -1,4 +1,8 @@
 
+//API KEY:beeeb0200ae49646011f7917db233044
+//var googleMapsAPI = "";/*<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc&callback=initMap'async defer></script>*/
+//https://www.googleapis.com/customsearch/v1?key=INSERT_YOUR_API_KEY&cx=017576662512468239146:omuauf_lfve&q=lectures
+//FozN4hA9DAjuptuej3UXIG5BT0mmLcrTx_LQEFyRUxSmJuGYe5Zic3os-8GGQPiv0TSfvxz6lkfxmyEvM0st4OFKA3kJE5bEMGQBpL8NuOlW-WXAWsOLO5ykfVCwWnYx
 
 // var placesQueryURL ="https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+" + cityPlaceApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8";
 
@@ -12,24 +16,26 @@
 // // var place = response.results.name;
 //             console.log(data);
 // });
-
+$(document).ready(function(){
+console.log("name")
 $("#submit-data").on("click", function(){
+  
     cityPlaceApi = $("#destination").val().trim();
     console.log($("#destination").val().trim())
     $.ajax({
         url:"https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+in+" + cityPlaceApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
         method: "get"
-    }).then(function(response){
-        results = response;
-        console.log(response);
-        $("#restaurant").append("<div>" + response.results[0].name + "</div>")
-        $("#restaurant").append("<div>" + response.results[0].formatted_address + "</div>")
-        $("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
-        $("#restaurant").append("<div>" + response.results[1].name + "</div>")
-        $("#restaurant").append("<div>" + response.results[1].formatted_address + "</div>")
+    }).then(function(data){
+        results = data;
+        console.log(data);
+        $("#rest-address").append("<div>" + data.results[0].name + "</div>")
+        $("#rest-address").append("<div>" + data.results[0].formatted_address + "</div>")
         //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
-        $("#restaurant").append("<div>" + response.results[2].name + "</div>")
-        $("#restaurant").append("<div>" + response.results[2].formatted_address + "</div>")
+        $("#rest-address").append("<div>" + data.results[1].name + "</div>")
+        $("#rest-address").append("<div>" + data.results[1].formatted_address + "</div>")
+        //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
+        $("#rest-address").append("<div>" + data.results[2].name + "</div>")
+        $("#rest-address").append("<div>" + data.results[2].formatted_address + "</div>")
         //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
     });
 });
@@ -48,7 +54,7 @@ $("#submit-data").on("click", function(){
         //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
     });
 });
-
+});
 
 //API KEY:beeeb0200ae49646011f7917db233044
 //var googleMapsAPI = "";/*<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc&callback=initMap'async defer></script>*/
@@ -74,10 +80,34 @@ var googleCustomSearchURL = "https://www.googleapis.com/customsearch/v1?key=AIza
 //--------------------------YUCK--------------------------------------------------------->
 
 //actual variables
+//UGLY URL VARIABLES//
+//var openWeatherQueryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=beeeb0200ae49646011f7917db233044";
+
+//var googleCustomSearchAPIKey = "AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus";
+//var googleCustomSearchURL = "https://www.googleapis.com/customsearch/v1?key=AIzaSyAod0vUH_7hewxjW_4HPxbZbeB0TzEbPus&cx=017576662512468239146:omuauf_lfve&q=lectures";
+
+/*
+            $.ajax({
+                url:"https://tools.cdc.gov/api/v2/resources/media?topicids=6241",
+                method: "get"
+            }).then(function(response){
+               results = response;
+               console.log(results);
+               //ID:6240
+            });
+*/
+//--------------------------YUCK--------------------------------------------------------->
+//IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! IGNORE ME! 
+
+
+ // Initialize Firebase
+
+ //IDs NEEDED: "map", "submit-data", "weather", "destination"
 
 var city = "Rome, Italy";
 var results = undefined;
 var coord = {lat: 0 , lng: 0 };
+var dateAndTime = "";
 
 
 
@@ -97,13 +127,14 @@ function initMap(coord) {
 
 $(document).ready(function(){
 
-
-
-
-
-    $("#submit-data").on("click", function(){
+    $("#submit-data").on("click", function(event){
+        event.preventDefault();
         city = $("#destination").val().trim();
-        console.log($("#destination").val().trim())
+        console.log(city);
+        //console.log($("#destination").val().trim())
+        $("#weather").empty();
+
+        //OPEN WEATHER API
         $.ajax({
             url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
             method: "get"
@@ -126,6 +157,26 @@ $(document).ready(function(){
             results = response;
             console.log(response);
         });
-    });
+            $("#weather").append("<p>" + response.main.temp + "ºF</p>")
+            timeZone();
+        });
+        
 
-});
+        //TIMEZONEDB
+        function timeZone(){
+            $.ajax({
+                url:"https://api.timezonedb.com/v2/get-time-zone?key=GDN58Z4BNM7G&format=json&by=position&lat=" + coord.lat + "&lng=" + coord.lng,
+                method: "get"
+            }).then(function(response){
+                results = response;
+                console.log(response);
+                //v2/resources/media/console.log(response);
+                var foreignTime = moment(response.formatted);
+                console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
+                dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
+                $("#weather").append("<p>" + dateAndTime + "</p>");
+            });
+
+        }
+        //https://cors-anywhere.herokuapp.com
+    });
