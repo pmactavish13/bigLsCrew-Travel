@@ -103,10 +103,8 @@ $(document).ready(function(){
                 $("#weather").append("<p>" + dateAndTime + "</p>");
             });
 
-
         }
-
-x
+        //https://cors-anywhere.herokuapp.com
     });
 
 });
