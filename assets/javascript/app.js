@@ -80,7 +80,7 @@ $(document).ready(function(){
         //TIMEZONEDB
         function timeZone(){
             $.ajax({
-                url:"http://api.timezonedb.com/v2/get-time-zone?key=GDN58Z4BNM7G&format=json&by=position&lat=" + coord.lat + "&lng=" + coord.lng,
+                url:"https://api.timezonedb.com/v2/get-time-zone?key=GDN58Z4BNM7G&format=json&by=position&lat=" + coord.lat + "&lng=" + coord.lng,
                 method: "get"
             }).then(function(response){
                 results = response;
