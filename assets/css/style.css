@@ -21,7 +21,7 @@ h1.headline  {
 }
 
 .jumbotron.jumbotron-fluid {
-    background-image: url("../assets/images/travelbgphoto2.jpg");
+    background-image: url("../images/travelbgphoto2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     max-width: 100%;
