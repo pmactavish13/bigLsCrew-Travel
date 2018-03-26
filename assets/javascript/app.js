@@ -10,6 +10,29 @@ var dateAndTime = "";
 
 //FUNCTIONS
 
+//Weather and Coordinates
+
+function tempAndCoord(){
+    city = $("#destination").val().trim();
+    $.ajax({
+        url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
+        method: "get"
+    }).then(function(response){
+        results = response;
+        console.log(response);
+        console.log(response.name);
+        console.log(response.main.temp);
+        coord.lat = response.coord.lat;
+        coord.lng = response.coord.lon;
+        //coords
+        initMap(coord);
+        $("#weather").append("<p>" + response.main.temp + "ºF</p>")
+        timeZone();
+    });
+
+}
+
+
 //GOOGLE MAP API FUNCTION
 function initMap(coord) {
     var uluru = coord;
@@ -129,22 +152,7 @@ $(document).ready(function () {
         event.preventDefault();
         
         //OPEN WEATHER API
-        city = $("#destination").val().trim();
-        $.ajax({
-            url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
-            method: "get"
-        }).then(function(response){
-            results = response;
-            console.log(response);
-            console.log(response.name);
-            console.log(response.main.temp);
-            coord.lat = response.coord.lat;
-            coord.lng = response.coord.lon;
-            //coords
-            initMap(coord);
-            $("#weather").append("<p>" + response.main.temp + "ºF</p>")
-            timeZone();
-        });
+        tempAndCoord();           
 
         //GOOGLE SEARCH API CALL
         googleSearchRest();
