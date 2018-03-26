@@ -21,7 +21,9 @@ function tempAndCoord(){
         results = response;
         console.log(response);
         console.log(response.name);
-        console.log(response.main.temp);
+        console.log("temp: " + response.main.temp + "degrees");
+        console.log("humidity: " + response.main.humidity + " %");
+        console.log("weather: " + response.weather[0].description);
         coord.lat = response.coord.lat;
         coord.lng = response.coord.lon;
         //coords
@@ -82,7 +84,9 @@ function gettySearch() {
             //v2/resources/media/console.log(response);
             var foreignTime = moment(response.formatted);
             console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
-            dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
+            console.log(foreignTime.format("hh:mm a MM/DD/YYYY"));
+            dateAndTime = foreignTime.format("HH:mm  MM/DD/YYYY ");
+            var standard;
             $("#timezone").text(dateAndTime);
         });
     }
