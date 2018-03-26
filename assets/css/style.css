@@ -60,7 +60,6 @@ form.citysearch {
 }
 
 
-
 .row.weatheralert {
     margin: auto;
     width: 75%;
@@ -137,11 +136,19 @@ form.citysearch {
     width: 100%;
 }
 
-.restaurant-txt p {
+/* .restaurant-txt p {
+    text-align: left;
+} */
+
+/* .restaurant-txt h3 {
+    text-align: left;
+} */
+
+.rest-name-class {
     text-align: left;
 }
 
-.restaurant-txt h3 {
+.rest-adresss-class {
     text-align: left;
 }
 
