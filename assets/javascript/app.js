@@ -17,6 +17,10 @@ var dateAndTime = "";
 function tempAndCoord(){
     destination = $("#destination").val().trim();
     //make sure there's a comma in there
+    if(destination.includes(",") === false){
+        alertify.error("wrong format");
+    }
+    //
     var destArr = destination.split(",");
     city = destArr[0].trim();
     country = destArr[1].trim();
