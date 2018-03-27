@@ -55,6 +55,8 @@ function initMap(coord) {
         position: uluru,
         map: map
     });
+    
+    console.log(map);
 }
 
 
