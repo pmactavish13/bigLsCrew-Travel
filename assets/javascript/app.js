@@ -1,6 +1,8 @@
 //GLOBAL VARIABLES
+var destination;
 var city;
 var country;
+
 
 var numSearched = 1
 var results = undefined;
@@ -13,15 +15,24 @@ var dateAndTime = "";
 //Weather and Coordinates
 
 function tempAndCoord(){
-    city = $("#destination").val().trim();
+    destination = $("#destination").val().trim();
+    //make sure there's a comma in there
+    if(destination.includes(",") === false){
+        alertify.error("wrong format");
+    }
+    var destArr = destination.split(",");
+    city = destArr[0].trim();
+    country = destArr[1].trim();
     $.ajax({
-        url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
+        url:"https://api.openweathermap.org/data/2.5/weather?q=" + destination + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
         method: "get"
     }).then(function(response){
         results = response;
         console.log(response);
         console.log(response.name);
-        console.log(response.main.temp);
+        console.log("temp: " + response.main.temp + "degrees");
+        console.log("humidity: " + response.main.humidity + " %");
+        console.log("weather: " + response.weather[0].description);
         coord.lat = response.coord.lat;
         coord.lng = response.coord.lon;
         //coords
@@ -54,7 +65,7 @@ function gettySearch() {
     $.ajax(
         {
             type: 'GET',
-            url: "https://api.gettyimages.com/v3/search/images/creative?phrase=" + city,
+            url: "https://api.gettyimages.com/v3/search/images/creative?phrase=" + destination,
             beforeSend: function (request) {
                 request.setRequestHeader("Api-Key", apiKey);
             }
@@ -82,7 +93,9 @@ function gettySearch() {
             //v2/resources/media/console.log(response);
             var foreignTime = moment(response.formatted);
             console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
-            dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
+            console.log(foreignTime.format("hh:mm a MM/DD/YYYY"));
+            dateAndTime = foreignTime.format("HH:mm  MM/DD/YYYY ");
+            var standard;
             $("#timezone").text(dateAndTime);
         });
     }
@@ -116,7 +129,7 @@ function googleSearchHealth(){
     cityHealthApi = $("#destination").val().trim();
     console.log($("#destination").val().trim())
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=health+information+in+" + cityHealthApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
+        url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=health+news+in+" + cityHealthApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
         method: "get"
     }).then(function (responseCityHealth) {
         results = responseCityHealth;
