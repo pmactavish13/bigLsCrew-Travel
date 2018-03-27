@@ -20,7 +20,6 @@ function tempAndCoord(){
     if(destination.includes(",") === false){
         alertify.error("wrong format");
     }
-    //
     var destArr = destination.split(",");
     city = destArr[0].trim();
     country = destArr[1].trim();
