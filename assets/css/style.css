@@ -33,9 +33,22 @@ h1.headline  {
     border-radius: 0;
     background-color: #fff;
     border: none;
-    padding: 10px;
-    margin-top: 15px;
+    padding: 10px 200px 10px 10px;
+    /* margin-top: 15px; */
 }
+
+form.citysearch {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    margin: auto;
+    max-width: 50%;
+ }
+ 
+ .btn.btn-primary {
+    padding: 10px;
+    border-radius: 0;
+ }
 
 .textintro h1, p {
     text-align: center;
@@ -51,13 +64,6 @@ h1.headline  {
     font-size: 2em;
 }
 
-form.citysearch {
-   display: flex;
-   flex-wrap: wrap;
-   flex-direction: row;
-   margin: auto;
-   width: 50%;
-}
 
 
 .row.weatheralert {
@@ -133,24 +139,20 @@ form.citysearch {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
-    width: 100%;
+    width: 50%;
 }
 
-/* .restaurant-txt p {
-    text-align: left;
-} */
-
-/* .restaurant-txt h3 {
-    text-align: left;
-} */
 
 .rest-name-class {
     text-align: left;
 }
-
-.rest-adresss-class {
+.rest-address-class {
     text-align: left;
-}
+    font-size: 1.6em;
+} 
+
+
+
 
 .slideshow {
     width: 100%;
@@ -159,17 +161,68 @@ form.citysearch {
   
 }
 
-.searchoptions {
-    width: 50%;
+.row.searchoptions {
+    /* display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center; */
+    max-width: 75%;
     margin: auto;
+    
 }
 
-.searchimage {
-    width: 100%;
-    padding: 15px;
+.searchimg {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 75%;
+    
 }
 
-img.pictures {
-    width: 100%;
+.pictures {
+    width:30%;
+padding: 15px;   
+    
 }
 
+.row.searchoptions h2 {
+    color: #fa7979;
+    font-weight: 600;
+    font-size: 2em;
+}
+
+
+.row.googlemap {
+    background-color: #eee;
+    height: 300px;
+}
+
+#map {
+    margin: auto;
+    max-width: 60%;
+}
+
+@media (max-width: 767.98px) { 
+
+    form.citysearch {
+        max-width: 85%;
+     }
+
+     .row.weatheralert {
+         width: 100%;
+         margin: 0;
+         /* display: flex;
+         flex-wrap: wrap; */
+     }
+
+     .card.response {
+         width: 100%;
+     }
+
+     /* img.pictures {
+        width: 80%;
+        padding: 15px;
+    } */
+
+}
