@@ -26,7 +26,7 @@ function tempAndCoord(){
         coord.lng = response.coord.lon;
         //coords
         initMap(coord);
-        $("#weather").append("<p>" + response.main.temp + "ºF</p>")
+        $("#current-temp").text(response.main.temp + "ºF")
         timeZone();
     });
 
@@ -83,7 +83,7 @@ function gettySearch() {
             var foreignTime = moment(response.formatted);
             console.log(foreignTime.format("HH:mm MM/DD/YYYY"));
             dateAndTime = foreignTime.format("HH:mm MM/DD/YYYY");
-            $("#weather").append("<p>" + dateAndTime + "</p>");
+            $("#timezone").text(dateAndTime);
         });
     }
 
@@ -158,6 +158,8 @@ $(document).ready(function () {
         googleSearchRest();
         //GOOGLE HEALTH SEARCH API CALL
         googleSearchHealth();
+
+        //gettySearch();
 
 
     });
