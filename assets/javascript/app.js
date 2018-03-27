@@ -119,35 +119,35 @@ function googleSearchRest(){
             console.log(restaurant11);
             console.log(adress11);
         }
-         var restaurant1 = data.results[0].name;
-         var address1 = data.results[0].formatted_address;
-         //restaurant1.addClass('rest-name-class');
+         var $restaurant1 = data.results[0].name;
+         var $address1 = data.results[0].formatted_address;
+         //$restaurant1.addClass('rest-name-class');
          //address1.addClass('rest-address-class');
-         $("#rest-address").append("<div>" + restaurant1 + "</div>");
-         $("#rest-address").append("<div>" + address1 + "</div>");
+         $("#rest-name1").text($restaurant1  );
+         $("#rest-address1").text($address1 );
          //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
        
           var restaurant2 = data.results[1].name;
           var address2 = data.results[1].formatted_address;
          // restaurant2.addClass('rest-name-class');
-         //address2.addClass('rest-address-class');
-          $("#rest-address").append("<div>" + restaurant2 + "</div>");
-          $("#rest-address").append("<div>" + address2 + "</div>");
+        // address2.addClass('rest-address-class');
+          $("#rest-name2").text( restaurant2 );
+          $("#rest-address2").text(address2 );
 
           var restaurant3 = data.results[2].name;
           var address3 = data.results[2].formatted_address;
          // restaurant3.addClass('rest-name-class');
          //address3.addClass('rest-address-class');
-         $("#rest-address").append("<div>" + restaurant3 + "</div>")
-         $("#rest-address").append("<div>" + address3 + "</div>")
+         $("#rest-name3").text( restaurant3 )
+         $("#rest-address3").text(address3 )
          //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
 
          var restaurant4 = data.results[3].name;
          var address4 = data.results[3].formatted_address;
-        // restaurant4.addClass('rest-name-class');
+         //restaurant4.addClass('rest-name-class');
         //address4.addClass('rest-address-class');
-        $("#rest-address").append("<div>" + restaurant4 + "</div>")
-        $("#rest-address").append("<div>" + address4 + "</div>")
+        $("#rest-name4").text( restaurant4 )
+        $("#rest-address4").text( address4 )
         //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
     });
 }
