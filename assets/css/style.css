@@ -92,7 +92,7 @@ form.citysearch {
 
 .cardinfo.right {
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: flex-start;
 }
@@ -109,14 +109,14 @@ form.citysearch {
     padding-bottom: 2em;
 }
 
-.cardinfo.alert {
+.cardinfo.searches {
     background-color: #fa7979;
     flex-wrap: wrap;
     padding-top: 2em;
     padding-bottom: 2em;
 }
 
-.cardinfo.vax {
+.cardinfo.popular {
     background-color: #b082ca;
     flex-wrap: wrap;
     padding-top: 2em;
