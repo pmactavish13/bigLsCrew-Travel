@@ -1,6 +1,8 @@
 //GLOBAL VARIABLES
+var destination;
 var city;
 var country;
+
 
 var numSearched = 1
 var results = undefined;
@@ -13,9 +15,13 @@ var dateAndTime = "";
 //Weather and Coordinates
 
 function tempAndCoord(){
-    city = $("#destination").val().trim();
+    destination = $("#destination").val().trim();
+    //make sure there's a comma in there
+    var destArr = destination.split(",");
+    city = destArr[0].trim();
+    country = destArr[1].trim();
     $.ajax({
-        url:"https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
+        url:"https://api.openweathermap.org/data/2.5/weather?q=" + destination + "&units=imperial&APPID=beeeb0200ae49646011f7917db233044",
         method: "get"
     }).then(function(response){
         results = response;
@@ -56,7 +62,7 @@ function gettySearch() {
     $.ajax(
         {
             type: 'GET',
-            url: "https://api.gettyimages.com/v3/search/images/creative?phrase=" + city,
+            url: "https://api.gettyimages.com/v3/search/images/creative?phrase=" + destination,
             beforeSend: function (request) {
                 request.setRequestHeader("Api-Key", apiKey);
             }
@@ -120,7 +126,7 @@ function googleSearchHealth(){
     cityHealthApi = $("#destination").val().trim();
     console.log($("#destination").val().trim())
     $.ajax({
-        url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=health+information+in+" + cityHealthApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
+        url: "https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=health+news+in+" + cityHealthApi + "&key=AIzaSyBHOtkHIyowW6axP4vdTXKYOKGpv2k2IM8",
         method: "get"
     }).then(function (responseCityHealth) {
         results = responseCityHealth;
