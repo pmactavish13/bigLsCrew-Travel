@@ -39,22 +39,19 @@
       <h1 class="headline">PRACTICAL TRAVEL</h1>
       <p class="lead">A multi-dimentional travel search experience.</p>
     </div>
-    <form class="citysearch">
-      <input id="destination" type="text" class="form-control" placeholder="City, Country">
-      <div class="form-row py-3">
-        <div class="col mr-1">
-          <input type="text" class="form-control" placeholder="Month of Travel">
-        </div>
-        <button id="submit-data" type="submit" class="btn btn-primary">Submit</button>
-      </div>
+    <div class="form-row py-3">
+    <form class="form-inline citysearch">
+      <input id="destination" type="text" class="form-control" placeholder="City, Country" onfocus="this.value= '' ">
+      <button id="submit-data" type="submit" class="btn btn-primary">Go!</button>
     </form>
   </div>
+  </div>
 
-  <div>
+  <div class="container-fluid">
     <!-- weather and travel responses -->
     <div class="row weatheralert">
-      <div class="col-md-6">
-        <div class="card">
+      <div class="col-lg-6">
+        <div class="card response mb-5">
           <div class="card-header">
             <h4>WEATHER</h4>
           </div>
@@ -95,25 +92,26 @@
       </div>
 
       <!-- card 2 -->
-      <div class="col-md-6">
-        <div class="card">
+      <div class="col-lg-6">
+        <div class="card response mb-5">
           <div class="card-header">
-            <h4>TRAVEL ADVISORIES</h4>
+            <h4>RECENT SEARCHES</h4>
           </div>
 
           <div class="card-body">
-            <div class="cardinfo alert">
-              <h5 class="alertheaders pl-3">Travel Warnings</h5>
-              <p class="alert-response pl-3" id="travel-response-no">
-                There are no current travel warnings for this location.
-              </p>
-              <!-- <p class = "alertresponse pl-3" id="travel-response-yes">
-                                    There is a current travel warning for this location.
-                                  </p> -->
+            <div class="cardinfo searches" id="recent-searches">
+                <h5>barcelona</h5>
+                <h5>rome</h5>
+                <h5>montreal</h5>
             </div>
+            <div class="cardinfo popular" id="popular-searches">
+              <h5>barcelona</h5>
+              <h5>rome</h5>
+              <h5>montreal</h5>
+              </div>
+          </div>
 
-
-            <div class="cardinfo vax">
+            <!-- <div class="cardinfo vax">
               <h5 class="alertheaders pl-3">Recommended Vaccinations</h5>
               <p class="alert-response pl-3" id="vax-response-no">
                 There are no current vaccinations recommended for this location.
@@ -121,8 +119,8 @@
               <!-- <p class = "alert-response pl-3" id="vax-response-yes">
                                   There CDC currently recommends that you are vaccinated for alien stubble fever.
                                 </p> -->
-            </div>
-          </div>
+            <!-- </div>  -->
+          
         </div>
       </div>
 
@@ -130,29 +128,23 @@
     </div>
 
     <div class="row alert-row my-5">
-
-      <!-- <h3><span id="alerticon"></span>Alert Header!</h3> -->
-      <div class="col-md-6">
-        <div class="restaurant-img" id="rest-img">
-          <img src="">
-        </div>
-      </div>
-      <div class="col-md-6">
+      <h2 class="w-100">Restaurants in <span></span></h2>
         <div class="restaurant-txt py-5">
-          <h3 class="w-100">
-            <span id="rest-name ">Restaurant Name</h3>
-          </span>
-          <p class="w-100">
-            <span id="rest-address">1234 This Street</p>
-          </span>
+          <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
+          <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
         </div>
-
-      </div>
+        <div class="restaurant-txt py-5">
+            <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
+            <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+          </div><div class="restaurant-txt py-5">
+              <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
+              <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+            </div><div class="restaurant-txt py-5">
+                <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
+                <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+              </div>
+        
     </div>
-
-
-
-
 
     <!-- photo gallery area-->
     <div class="row photogallery my-5" dir="true">
@@ -161,36 +153,18 @@
 
     </div>
 
+ 
 
-    <div class="row searchoptions">
-      <div class="col-md-4">
-        <div class="searchimg">
-          <img src="assets/images/travelsite-events.jpg" class="pictures" id="events-image">
-        </div>
-      </div>
+    <div class="row googlemap mt-5">
+      <div class="map-embed">
+        <div id="map"></div>
 
-      <div class="col-md-4">
-        <div class="searchimg">
-          <img src="assets/images/travelsite-sports.jpg" class="pictures" id="sports-image">
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <div class="searchimg">
-          <img src="assets/images/travelsite-food.jpg" class="pictures" id="food-image">
-        </div>
-      </div>
-    </div>
-
-    <div class="row googlemap">
-
-      <div class=" col-md-12 map-embed">
-          <div id="map"></div>
-      </div>
+    
+  
     </div>
 
     <!-- Optional JavaScript -->
-
+  </div>
     
     
 </body>
