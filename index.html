@@ -25,8 +25,6 @@
   <script src="https://momentjs.com/downloads/moment.js"></script>
 
 
-  <!--FIREBASE-->
-  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <!--GOOGLE MAPS-->
 <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc' async
     defer></script>
@@ -37,8 +35,12 @@
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css"/> 
       <!-- Bootstrap theme -->
        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css"/>   
-    
-   <script src="assets/javascript/app.js"></script>
+    <!--FIREBASE-->
+  <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+    <!-- slidesjs -->
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <script src="assets/javascript/jquery.slides.min.js"></script>
+  <script src="assets/javascript/app.js"></script>
   <title>Super Smart Travel</title>
 </head>
 
@@ -139,25 +141,25 @@
     <div class="row alert-row my-5">
       <h2 class="w-100">Restaurants in <span></span></h2>
         <div class="restaurant-txt py-5">
-          <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
-          <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+          <h3 class="w-100"><span id="rest-name1" class="rest-name-class"></h3></span>
+          <p><span id="rest-address1" class="rest-address-class"></p></span>
         </div>
         <div class="restaurant-txt py-5">
-            <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
-            <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+            <h3 class="w-100"><span id="rest-name2" class="rest-name-class"></h3></span>
+            <p><span id="rest-address2" class="rest-address-class"></p></span>
           </div><div class="restaurant-txt py-5">
-              <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
-              <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+              <h3 class="w-100"><span id="rest-name3" class="rest-name-class"></h3></span>
+              <p><span id="rest-address3" class="rest-address-class"></p></span>
             </div><div class="restaurant-txt py-5">
-                <h3 class="w-100"><span id="rest-name" class="rest-name-class">Restaurant Name</h3></span>
-                <p><span id="rest-address" class="rest-address-class">1234 This Street</p></span>
+                <h3 class="w-100"><span id="rest-name4" class="rest-name-class"></h3></span>
+                <p><span id="rest-address4" class="rest-address-class"></p></span>
               </div>
         
     </div>
 
     <!-- photo gallery area-->
     <div class="row photogallery my-5" dir="true">
-      <div class="slideshow"></div>
+      <div class="slideshow" id="slides"></div>
       <div class ="slider-for"></div>
 
     </div>

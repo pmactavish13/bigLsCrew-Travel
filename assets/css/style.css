@@ -151,7 +151,9 @@ form.citysearch {
     font-size: 1.6em;
 } 
 
-
+#slides {
+    display:none;
+  }
 
 
 .slideshow {
