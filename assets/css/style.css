@@ -151,17 +151,15 @@ form.citysearch {
     font-size: 1.6em;
 } 
 
-#slides {
-    display:none;
-  }
 
 
-.slideshow {
+
+/* .slideshow {
     width: 100%;
     height: 350px;
     background-color: #eee;
   
-}
+} */
 
 .row.searchoptions {
     /* display: flex;
@@ -197,12 +195,13 @@ padding: 15px;
 
 .row.googlemap {
     background-color: #eee;
-    height: 300px;
+    /* height: 300px; */
 }
 
 #map {
-    margin: auto;
-    max-width: 60%;
+    /* margin: auto; */
+    height: 400px;
+    /* max-width: 60%;  */
 }
 
 @media (max-width: 767.98px) { 

@@ -48,7 +48,11 @@ function tempAndCoord() {
         console.log(response.name);
         console.log("temp: " + response.main.temp + "degrees");
         console.log("humidity: " + response.main.humidity + " %");
+        $("#humidity").text(response.main.humidity);
+
         console.log("weather: " + response.weather[0].description);
+        $("#conditions").text(response.weather[0].description);
+
         coord.lat = response.coord.lat;
         coord.lng = response.coord.lon;
         //coords

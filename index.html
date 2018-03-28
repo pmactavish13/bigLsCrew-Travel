@@ -41,6 +41,7 @@
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>
   <script src="assets/javascript/jquery.slides.min.js"></script>
   <script src="assets/javascript/app.js"></script>
+    
   <title>Super Smart Travel</title>
 </head>
 
@@ -69,32 +70,32 @@
           <div class="card-body">
             <div class="cardinfo time">
               <div id="weather" class="current">
-                <h5 class="alertheaders">Current Temperature</h5>
-                <h5 id="currentresponse">
-                  <span id= "current-temp" >00f</span>
+                <h5 class="alertheaders">TEMPERATURE</h5>
+                <h5 id="current-temp">
+                  <!-- <span id= "current-temp" ></span> -->
                   <!--<span id="currentc">00c</span>-->
                 </h5>
               </div>
               <div class="average">
-                <h5 class="alertheaders">Time and Date</h5>
-                <h5 id="currentresponse">
-                  <span id="timezone">00f</span>
+                <h5 class="alertheaders">TIME & DATE</h5>
+                <h5 id="timezone">
+                  <!-- <span id="timezone">00f</span> -->
                 </h5>
               </div>
             </div>
             <div class="cardinfo zone">
               <div class="current">
-                <h5 class="alertheaders">Current Weather</h5>
-                <h5 id="currentresponse">
-                  <span id="currentf">00f</span>
-                  <span id="currentc">00c</span>
+                <h5 class="alertheaders">HUMIDITY</h5>
+                <h5 id="humidity">
+                  <!-- <span id="currentf">00f</span>
+                  <span id="currentc">00c</span> -->
                 </h5>
               </div>
               <div class="average">
-                <h5 class="alertheaders">Seasonal Average</h5>
-                <h5 id="currentresponse">
-                  <span id="currentf">00f</span>
-                  <span id="currentc">00c</span>
+                <h5 class="alertheaders">CONDITIONS</h5>
+                <h5 id="conditions">
+                  <!-- <span id="currentf">00f</span>
+                  <span id="currentc">00c</span> -->
                 </h5>
               </div>
             </div>
@@ -111,14 +112,14 @@
 
           <div class="card-body">
             <div class="cardinfo searches" id="recent-searches">
-                <h5>barcelona</h5>
+                <!-- <h5>barcelona</h5>
                 <h5>rome</h5>
-                <h5>montreal</h5>
+                <h5>montreal</h5> -->
             </div>
             <div class="cardinfo popular" id="popular-searches">
-              <h5>barcelona</h5>
+              <!-- <h5>barcelona</h5>
               <h5>rome</h5>
-              <h5>montreal</h5>
+              <h5>montreal</h5> -->
               </div>
           </div>
 
@@ -139,7 +140,7 @@
     </div>
 
     <div class="row alert-row my-5">
-      <h2 class="w-100">Restaurants in <span></span></h2>
+      <h2 class="w-100">Restaurants in <span id="cityname"></span></h2>
         <div class="restaurant-txt py-5">
           <h3 class="w-100"><span id="rest-name1" class="rest-name-class"></h3></span>
           <p><span id="rest-address1" class="rest-address-class"></p></span>
@@ -159,25 +160,26 @@
 
     <!-- photo gallery area-->
     <div class="row photogallery my-5" dir="true">
-      <div class="slideshow" id="slides"></div>
+      <div class="slideshow"></div>
       <div class ="slider-for"></div>
 
     </div>
 
  
+<div id="map">
+  
+</div>    
 
-    <div class="row googlemap mt-5">
+<!-- <div class="row googlemap mt-5">
       <div class="map-embed">
         <div id="map"></div>
-
-    
-  
-    </div>
-
-    <!-- Optional JavaScript -->
   </div>
+  </div> -->
+    <!-- Optional JavaScript -->
+  
     
-    
+    <script src="assets/javascript/app.js"></script>
+
 </body>
 
 </html>
