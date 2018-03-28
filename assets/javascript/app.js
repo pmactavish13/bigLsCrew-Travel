@@ -38,6 +38,8 @@ function tempAndCoord(){
         //coords
         initMap(coord);
         $("#current-temp").text(response.main.temp + "ºF")
+        $("#humidity").text(response.main.humidity + "%")
+        $("#conditions").text(response.weather[0].description)
         timeZone();
     });
 
@@ -150,6 +152,7 @@ function googleSearchRest(){
         //address4.addClass('rest-address-class');
         $("#rest-name4").text( restaurant4 )
         $("#rest-address4").text( address4 )
+        console.log(restaurant4);
         //$("#restaurant").append("<div>" + response.results[0].photos[0].photo_reference + "</div>")
     });
 }
