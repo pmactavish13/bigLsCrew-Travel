@@ -199,10 +199,9 @@ padding: 15px;
 }
 
 #map {
-    /* margin: auto;
-    height: 300px;
-    max-width: 60%; */
-    height: 300px;
+    /* margin: auto; */
+    height: 400px;
+    /* max-width: 60%;  */
 }
 
 @media (max-width: 767.98px) { 

@@ -68,14 +68,14 @@
             <div class="cardinfo time">
               <div id="weather" class="current">
                 <h5 class="alertheaders">TEMPERATURE</h5>
-                <h5 id="currentresponse">
-                  <span id= "current-temp" ></span>
+                <h5 id="current-temp">
+                  <!-- <span id= "current-temp" ></span> -->
                   <!--<span id="currentc">00c</span>-->
                 </h5>
               </div>
               <div class="average">
                 <h5 class="alertheaders">TIME & DATE</h5>
-                <h5 id="currentresponse">
+                <h5 id="timezone">
                   <!-- <span id="timezone">00f</span> -->
                 </h5>
               </div>
@@ -83,14 +83,14 @@
             <div class="cardinfo zone">
               <div class="current">
                 <h5 class="alertheaders">HUMIDITY</h5>
-                <h5 id="currentresponse">
+                <h5 id="humidity">
                   <!-- <span id="currentf">00f</span>
                   <span id="currentc">00c</span> -->
                 </h5>
               </div>
               <div class="average">
                 <h5 class="alertheaders">CONDITIONS</h5>
-                <h5 id="currentresponse">
+                <h5 id="conditions">
                   <!-- <span id="currentf">00f</span>
                   <span id="currentc">00c</span> -->
                 </h5>
@@ -137,7 +137,7 @@
     </div>
 
     <div class="row alert-row my-5">
-      <h2 class="w-100">Restaurants in <span></span></h2>
+      <h2 class="w-100">Restaurants in <span id="cityname"></span></h2>
         <div class="restaurant-txt py-5">
           <h3 class="w-100"><span id="rest-name1" class="rest-name-class"></h3></span>
           <p><span id="rest-address1" class="rest-address-class"></p></span>
@@ -163,12 +163,15 @@
     </div>
 
  
+<div id="map">
+  
+</div>    
 
-    <div class="row googlemap mt-5">
+<!-- <div class="row googlemap mt-5">
       <div class="map-embed">
         <div id="map"></div>
-    </div>
   </div>
+  </div> -->
     <!-- Optional JavaScript -->
   
     
