@@ -10,13 +10,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans+Condensed:400,500,600" rel="stylesheet">
-
-  </head>
   <link rel="stylesheet" href="assets/css/style.css">
   <!-- Optional JavaScript -->
 
-
- <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
@@ -28,20 +25,18 @@
   <!--FIREBASE-->
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
   <!--GOOGLE MAPS-->
-<script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc' async
-    defer></script>
-    
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc' async defer></script>
+
   <!--ALERTIFY JS-->
-      <!-- JavaScript -->
-      <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js"></script>
-      <!-- CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css"/> 
-      <!-- Bootstrap theme -->
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css"/>  
-       
-       <!-- <script src="http://code.jquery.com/jquery-latest.min.js"></script>  -->
-    <!-- <script src="assets/javascript/jquery.slides.min.js"></script>  -->
-    
+  <!-- JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css" />
+  <!-- Bootstrap theme -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css" />
+  <!-- slidesjs theme -->
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+
   <title>Super Smart Travel</title>
 </head>
 
@@ -52,11 +47,11 @@
       <p class="lead">A multi-dimentional travel search experience.</p>
     </div>
     <div class="form-row py-3">
-    <form class="form-inline citysearch">
-      <input id="destination" type="text" class="form-control" placeholder="City, Country" onfocus="this.value= '' ">
-      <button id="submit-data" type="submit" class="btn btn-primary">Go!</button>
-    </form>
-  </div>
+      <form class="form-inline citysearch">
+        <input id="destination" type="text" class="form-control" placeholder="City, Country" onfocus="this.value= '' ">
+        <button id="submit-data" type="submit" class="btn btn-primary">Go!</button>
+      </form>
+    </div>
   </div>
 
   <div class="container-fluid">
@@ -109,54 +104,79 @@
           <div class="card-header">
             <h4>RECENT SEARCHES</h4>
           </div>
-
           <div class="card-body">
             <div class="cardinfo searches" id="recent-searches">
-                
             </div>
-            <div class="cardinfo popular" id="popular-searches">
-              
+          </div>  
+          <div class="card-header">
+            <h4>POPULAR SEARCHES</h4>
           </div>
-
+          <div class="card-body">
+            <div class="cardinfo popular" id="popular-searches">
+            </div>
+          </div>
         </div>
       </div>
 
-
-    </div>
-
-    <div class="row alert-row my-5">
-      <h2 class="w-100">Restaurants in <span id="cityname"></span></h2>
+      <div class="row alert-row my-5">
+        <h2 class="w-100">Restaurants in
+          <span id="cityname"></span>
+        </h2>
         <div class="restaurant-txt py-5">
-          <h3 class="w-100"><span id="rest-name1" class="rest-name-class"></h3></span>
-          <p><span id="rest-address1" class="rest-address-class"></p></span>
+          <h3 class="w-100">
+            <span id="rest-name1" class="rest-name-class">
+          </h3>
+          </span>
+          <p>
+            <span id="rest-address1" class="rest-address-class">
+          </p>
+          </span>
         </div>
         <div class="restaurant-txt py-5">
-            <h3 class="w-100"><span id="rest-name2" class="rest-name-class"></h3></span>
-            <p><span id="rest-address2" class="rest-address-class"></p></span>
-          </div><div class="restaurant-txt py-5">
-              <h3 class="w-100"><span id="rest-name3" class="rest-name-class"></h3></span>
-              <p><span id="rest-address3" class="rest-address-class"></p></span>
-            </div><div class="restaurant-txt py-5">
-                <h3 class="w-100"><span id="rest-name4" class="rest-name-class"></h3></span>
-                <p><span id="rest-address4" class="rest-address-class"></p></span>
-              </div>
-        
-    </div>
+          <h3 class="w-100">
+            <span id="rest-name2" class="rest-name-class">
+          </h3>
+          </span>
+          <p>
+            <span id="rest-address2" class="rest-address-class">
+          </p>
+          </span>
+        </div>
+        <div class="restaurant-txt py-5">
+          <h3 class="w-100">
+            <span id="rest-name3" class="rest-name-class">
+          </h3>
+          </span>
+          <p>
+            <span id="rest-address3" class="rest-address-class">
+          </p>
+          </span>
+        </div>
+        <div class="restaurant-txt py-5">
+          <h3 class="w-100">
+            <span id="rest-name4" class="rest-name-class">
+          </h3>
+          </span>
+          <p>
+            <span id="rest-address4" class="rest-address-class">
+          </p>
+          </span>
+        </div>
 
-    <!-- photo gallery area-->
-    <div class="row photogallery my-5" dir="true">
-     
-      <div id="slides"></div>
+      </div>
 
-    </div>
+      <div id="map"></div>
 
- 
-<div id="map"></div>    
+      <!-- photo gallery area-->
+      <div class="row photogallery my-5" dir="true">
+        <div class="staticImage" id="photo1"></div>
+        <div id="slides"></div>
+        <div class="staticImage" id="photo2"></div>
+      </div>
 
-    <!-- <script src="assets/javascript/paula-app.js"></script> -->
-    <script src="assets/javascript/app.js"></script>
-  
 
+      <script src="assets/javascript/jquery.slides.min.js"></script>
+      <script src="assets/javascript/app.js"></script>
 
 </body>
 
