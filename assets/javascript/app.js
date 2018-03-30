@@ -90,6 +90,7 @@ function initMap(coord) {
 
 function flickrSlideshow() {
     $(function () {
+        $("#slides").empty();
         //get JSON
         var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
@@ -378,7 +379,6 @@ $(document).ready(function () {
 
         // Flickr with slidesjs
         flickrSlideshow();
-
         // Flickr static images
         staticImage();
 
