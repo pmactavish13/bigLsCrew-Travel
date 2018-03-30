@@ -86,54 +86,26 @@ function initMap(coord) {
 }
 
 
-//GETTY IMAGES SEARCH FUNCTION 
+//Flickr IMAGES SEARCH FUNCTION 
 
 function flickrSlideshow() {
     $(function () {
-        $("#photo1").empty;
-        $("#photo2").empty
         //get JSON
         var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
         $.getJSON(flickrAPI, {
-            tags: "architecture, " + city + " ,sights",
+            tags: "architecture, " + city + " ,attraction",
             tagmode: "all",
             format: "json",
             extras: "url_l"
         }).done(function (data) {
-            //console.log(data);
             $.each(data.items, function (index, item) {
-                //    console.log(item);
-                $("<img>").attr("src", item.media.m + "/350x380").appendTo("#slides");
+                $("<img>").attr("src", item.media.m + "/330x380").appendTo("#slides");
                 if (index == 9) {
                     return false;
                 }
             });
-
-        }).fail(function () {
-            alert("Ajax call failed.");
-        });
-    })
-    $(function () {
-        //get JSON
-        var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-
-        $.getJSON(flickrAPI, {
-            tags: "architecture, " + city + " ,sights",
-            tagmode: "all",
-            format: "json",
-            extras: "url_l"
-        }).done(function (data) {
-            // console.log(data);
-            for (var i = 2; i = 0; i--) {
-                data.items, function (index, item) {
-                    //        console.log(item);
-                    $("<img>").attr("src", item[i].media.m + "/350x380").appendTo("#photo[i]");
-                    if (index == 1) {
-                        return false;
-                    }
-                }
-            };
+            slidesJS();
         }).fail(function () {
             alert("Ajax call failed.");
         });
@@ -144,16 +116,55 @@ function slidesJS() {
     $(function () {
         $("#slides").slidesjs({
             width: 380,
-            height: 350,
+            height: 330,
             play: {
-                active: true,
+                active: false,
+                effect: "slide",
                 auto: true,
                 interval: 4000,
-                swap: true
+                swap: true,
+                pauseOnHover: true,
+                restartDelay: 1000
             },
+            navigation: {
+                active: false,
+                effect: "slide"
+            },
+            pagination: {
+                active: false,
+                effect: "slide"
+            }
         });
     });
 };
+
+function staticImage() {
+    $(function () {
+        //get JSON
+        var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
+        $.getJSON(flickrAPI, {
+            tags: "architecture, " + city + ", night",
+            tagmode: "all",
+            format: "json",
+            extras: "url_l",   
+        }).done(function (data) {
+            var myJSON = JSON.stringify(data);
+            var picture = JSON.parse(myJSON);
+            $.each(data.items, function (index, item) { 
+                for (var i = 0; i < 2; i++) {
+                    var pic = "#photo" + [i];
+                    var img = "<img src='" + picture.items[i].media.m + "'/330x380/>";
+                    $("#photo" + [i]).html(img);
+                };
+                if (index == 0) {
+                    return false;
+                }
+            });
+        }).fail(function () {
+            alert("Ajax call failed.");
+        });
+    })
+}
 
 //TIMEZONE DB FUNCTIONf
 function timeZone() {
@@ -367,6 +378,9 @@ $(document).ready(function () {
 
         // Flickr with slidesjs
         flickrSlideshow();
+
+        // Flickr static images
+        staticImage();
 
     });
 
