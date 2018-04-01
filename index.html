@@ -27,6 +27,12 @@
   <!--GOOGLE MAPS-->
   <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC-gMBFX829n7IjoF8DIJMnBO77IQ8JgRc' async defer></script>
 
+  <!--script for slick-->
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js" integrity="sha256-spTpc4lvj4dOkKjrGokIrHkJgNA0xMS98Pw9N7ir9oI="
+    crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js" integrity="sha256-HmfY28yh9v2U4HfIXC+0D6HCdWyZI42qjaiCFEJgpo0="
+    crossorigin="anonymous"></script>
+
   <!--ALERTIFY JS-->
   <!-- JavaScript -->
   <script src="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/alertify.min.js"></script>
@@ -34,8 +40,9 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/alertify.min.css" />
   <!-- Bootstrap theme -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/alertifyjs@1.11.1/build/css/themes/bootstrap.min.css" />
-  <!-- slidesjs theme -->
-  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <!-- slick theme -->
+  <link rel="stylesheet" type="text/css" href="slick/slick.css" />
+  <link rel="stylesheet" type="text/css" href="slick/slick-theme.css" />
 
   <title>Super Smart Travel</title>
 </head>
@@ -119,7 +126,7 @@
       </div>
     </div>
 
-    <div class="row alert-row my-5">
+    <div class="row alert-row my-5" id="restMargin">
       <h2 class="w-100">Restaurants in
         <span id="cityname"></span>
       </h2>
@@ -166,28 +173,16 @@
     </div>
 
     <!-- photo gallery area-->
-    <div class="row" >
-      <div class="col-sm" id="photo0">
-
-      </div>
-      <div class="col-sm" id="slides">
-
-      </div>
-      <div class="col-sm" id="photo1">
-
-      </div>
+    <div class="slider responsive" id="carouselContainer"> 
     </div>
-
+    <br>
+    <br>
+    <br>
     <div id="map"></div>
 
-    <!-- <div class="row photogallery my-5" dir="true">
-        <div class="staticImage" id="photo1"></div>
-        <div id="slides"></div>
-        <div class="staticImage" id="photo2"></div>
-      </div> -->
   </div>
 
-  <script src="assets/javascript/jquery.slides.min.js"></script>
+  <script type="text/javascript" src="slick/slick.min.js"></script>
   <script src="assets/javascript/app.js"></script>
 
 </body>
