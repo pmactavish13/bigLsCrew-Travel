@@ -123,6 +123,10 @@ form.citysearch {
     padding-bottom: 2em;
 }
 
+#restMargin {
+    margin-top: -100px;
+}
+
 .alert-row {
     margin: auto;
     max-width: 75%;
@@ -142,7 +146,6 @@ form.citysearch {
     width: 50%;
 }
 
-
 .rest-name-class {
     text-align: left;
 }
@@ -151,31 +154,14 @@ form.citysearch {
     font-size: 1.6em;
 } 
 
-#photo0, #photo1 {
-    margin-top: 20px;
-    height: 100%;
-    width: 100%;
-    object-fit: cover auto;
+
+
+.slider img {
+    height:300px;
 }
 
-#photo0 {
-    text-align: right;
-}
-
-#slides {
-    margin-bottom:10px;
-    width: 100%;
-    height:100%;
-    object-fit: cover;
-    display:none;
-}
-
-.slideshow {
-    margin-bottom:10px;
-    width: 33%;
-    height: 350px;
-    background-color: #eee;
-    justify-content: center;
+.slider {
+    margin-top: -70px;
 }
 
 .row.searchoptions {

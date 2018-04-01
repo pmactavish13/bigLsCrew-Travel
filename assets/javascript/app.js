@@ -10,6 +10,7 @@ var numSearched = 1
 var results = undefined;
 var coord = { lat: 0, lng: 0 };
 var dateAndTime = "";
+var slideShow = 1
 
 
 //FUNCTIONS
@@ -90,7 +91,7 @@ function initMap(coord) {
 
 function flickrSlideshow() {
     $(function () {
-        $("#slides").empty();
+
         //get JSON
         var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
 
@@ -100,72 +101,60 @@ function flickrSlideshow() {
             format: "json",
             extras: "url_l"
         }).done(function (data) {
+
             $.each(data.items, function (index, item) {
-                $("<img>").attr("src", item.media.m + "/330x380").appendTo("#slides");
-                if (index == 9) {
+                console.log("hi")
+                if (slideShow > 1) {
+                    console.log("Remove")
+                    $('.slider').slick('removeSlide', null, null, true);
+                    $('.slider').slick("unslick");
+                }
+                $("<img>").attr("src", item.media.m).appendTo(".slider");
+                if (index == 17) {
                     return false;
                 }
             });
-            slidesJS();
+            slick();
         }).fail(function () {
             alert("Ajax call failed.");
         });
     })
 };
 
-function slidesJS() {
-    $(function () {
-        $("#slides").slidesjs({
-            width: 380,
-            height: 330,
-            play: {
-                active: false,
-                effect: "slide",
-                auto: true,
-                interval: 4000,
-                swap: true,
-                pauseOnHover: true,
-                restartDelay: 1000
-            },
-            navigation: {
-                active: false,
-                effect: "slide"
-            },
-            pagination: {
-                active: false,
-                effect: "slide"
+// slick to run slideshow
+function slick() {
+    slideShow++
+    $('.responsive').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        adaptiveWidth: true,
+        adaptiveHeight: true,
+        responsive: [{
+            breakpoint: 1024,
+            settings: {
+                slidesToShow: 3,
+                infinite: true
             }
-        });
+
+        }, {
+            breakpoint: 600,
+            settings: {
+                slidesToShow: 2,
+                dots: true
+            }
+        }, {
+            breakpoint: 300,
+            settings: "unslick" // destroys slick
+
+        }]
     });
 };
 
-function staticImage() {
-    $(function () {
-        //get JSON
-        var flickrAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";
-        $.getJSON(flickrAPI, {
-            tags: "architecture, " + city + ", night",
-            tagmode: "all",
-            format: "json",
-            extras: "url_l",   
-        }).done(function (data) {
-            var myJSON = JSON.stringify(data);
-            var picture = JSON.parse(myJSON);
-            $.each(data.items, function (index, item) { 
-                for (var i = 0; i < 2; i++) {
-                    var pic = "#photo" + [i];
-                    var img = "<img src='" + picture.items[i].media.m + "'/330x380/>";
-                    $("#photo" + [i]).html(img);
-                };
-                if (index == 0) {
-                    return false;
-                }
-            });
-        }).fail(function () {
-            alert("Ajax call failed.");
-        });
-    })
-}
 
 //TIMEZONE DB FUNCTIONf
 function timeZone() {
@@ -335,7 +324,6 @@ function updateScreen() {
 
 function updateRecentSearches() {
     recentSearches++;
-    console.log(recentSearches);
     var recentCity = "<h5>" + city + "</h5>";
     if (recentSearches > 3) {
         $("#recent-searches h5:last-child").remove();
@@ -377,11 +365,8 @@ $(document).ready(function () {
         numSearched = 1;
         numSearchedCounter = 1;
 
-        // Flickr with slidesjs
+        // Flickr with slick
         flickrSlideshow();
-        // Flickr static images
-        staticImage();
-
     });
 
 
